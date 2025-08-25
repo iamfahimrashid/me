@@ -14,7 +14,34 @@ function grp(imageContainer,w,h) {
     ease: "none",
   });
 } 
+
+function applyLazyLoading() {
+  document.querySelectorAll('img:not([loading])').forEach(img => {
+    img.setAttribute('loading', 'lazy');
+  });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
+
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+  const workYearsEl = document.getElementById('workYears');
+  if (workYearsEl) {
+    const start = new Date(2022, 5); // June 2022 (0-based month)
+    const now = new Date();
+    let years = (now.getFullYear() - start.getFullYear()) + (now.getMonth() - start.getMonth()) / 12;
+    years = Math.ceil(years);
+
+    const numberWords = [
+      'zero', 'one', 'two', 'three', 'four', 'five', 'six',
+      'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'
+    ];
+    let yearsWord = years <= 12 ? numberWords[years] : years.toString();
+    workYearsEl.textContent = yearsWord;
+  }
+
+  applyLazyLoading();
+
   let instr =  document.getElementsByClassName('infinite-scroll-track');
   Array.from(instr).forEach(element => {
     let instrHtml =  element.innerHTML;
@@ -188,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.unobserve(element); // Stop observing after animation starts
       }
     });
-  }, { threshold: 1 }); // Trigger when 100% of the element is visible
+  }, { threshold: 0.1 }); // Trigger when 100% of the element is visible
   // Start observing the element
   const numberElements = document.querySelectorAll('.number_to_be_counted');
   if (numberElements) {
