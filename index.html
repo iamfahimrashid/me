@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Fahim Rashid | Portfolio</title>
+
+  <!-- Tailwind CSS -->
+  <script src="asset/tailwind.css"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="asset/fontawesome-all.min.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="asset/fonts.googleapis.css" rel="stylesheet">
+
+  <!-- jQuery -->
+  <script src="asset/jquery-3.6.0.min.js"></script>
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: 'rgb(59, 130, 246)',
+            secondary: 'rgb(147, 51, 234)',
+            background: 'rgb(15, 23, 42)',
+            foreground: 'rgb(248, 250, 252)',
+            border: 'rgb(30, 41, 59)',
+            card: 'rgb(30, 41, 59)',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            poppins: ['Poppins', 'sans-serif']
+          },
+          animation: {
+            blink: 'blink 1s step-end infinite',
+            glow: 'glow 2s ease-in-out infinite',
+            spark: 'spark 1.5s ease-in-out infinite',
+            'spark-move': 'spark-move 3s linear infinite',
+            pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            bounce: 'bounce 1s infinite'
+          },
+          keyframes: {
+            blink: {
+              '0%, 100%': { opacity: '1' },
+              '50%': { opacity: '0' }
+            },
+            glow: {
+              '0%, 100%': { opacity: '0.4' },
+              '50%': { opacity: '0.8' }
+            },
+            spark: {
+              '0%': { transform: 'scale(0.6)', opacity: '0.4' },
+              '50%': { transform: 'scale(1.2)', opacity: '1' },
+              '100%': { transform: 'scale(0.6)', opacity: '0.4' }
+            },
+            'spark-move': {
+              '0%': { transform: 'translateX(0) translateY(0)', opacity: '0' },
+              '10%': { opacity: '1' },
+              '90%': { opacity: '1' },
+              '100%': { transform: 'translateX(30px) translateY(-15px)', opacity: '0' }
+            },
+            pulse: {
+              '0%, 100%': { opacity: '1' },
+              '50%': { opacity: '.5' }
+            },
+            bounce: {
+              '0%, 100%': {
+                transform: 'translateY(-25%)',
+                animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)'
+              },
+              '50%': {
+                transform: 'translateY(0)',
+                animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)'
+              }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="asset/style.css">
+</head>
+
+<body style="overflow-x: hidden !important;">
+  <!-- Navbar -->
+  <div id="loader" class="flex items-center justify-center h-[100vh] w-[100%] bg-white fixed z-100">
+    <div class="flex items-center justify-center flex-col">
+      <img src="asset/loading.png" alt="" width="100">
+      <div class="fill-line"><span></span></div>
+    </div>
+  </div>
+
+  <div class="hidden" id="w-content">
+
+    <!-- Font Awesome Icons; Make sure to add it in the <head> tag -->
+
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 navbar-glass" id="navbar">
+      <div class="container mx-auto px-4 md:px-6">
+        <nav class="flex justify-between items-center h-20">
+          <!-- Mobile Menu Button -->
+          <div class="md:hidden flex-none pr-4">
+            <button id="mobile-menu-btn" class="text-white focus:outline-none">
+              <i class="fas fa-bars text-xl"></i>
+            </button>
+          </div>
+
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex flex-1 justify-center">
+            <ul class="flex items-center gap-8 navbar-menu-container">
+              <li>
+                <a href="#home" class="navbar-menu active text-base" data-section="home">Home</a>
+              </li>
+              <li>
+                <a href="#about" class="navbar-menu text-base" data-section="about">About</a>
+              </li>
+              <li>
+                <a href="#skills" class="navbar-menu text-base" data-section="skills">Skills</a>
+              </li>
+              <li>
+                <a href="#education" class="navbar-menu text-base" data-section="education">Education</a>
+              </li>
+              <li>
+                <a href="#experience" class="navbar-menu text-base" data-section="experience">Experience</a>
+              </li>
+              <li>
+                <a href="#projects" class="navbar-menu text-base" data-section="projects">Projects</a>
+              </li>
+              <li>
+                <a href="#contact" class="navbar-menu text-base" data-section="contact">Contact</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Mobile Menu (initially hidden) -->
+          <div id="mobile-menu"
+            class="fixed inset-0 z-50 bg-gray-900/95 backdrop-blur-md flex-col items-center justify-center hidden transition-all duration-300 h-[max-content] py-8">
+            <button id="close-menu-btn" class="absolute top-5 right-5 text-white text-xl">
+              <i class="fas fa-times"></i>
+            </button>
+            <ul class="flex flex-col items-center gap-8">
+              <li>
+                <a href="#home" class="navbar-menu active text-xl" data-section="home">Home</a>
+              </li>
+              <li>
+                <a href="#about" class="navbar-menu text-xl" data-section="about">About</a>
+              </li>
+              <li>
+                <a href="#skills" class="navbar-menu text-xl" data-section="skills">Skills</a>
+              </li>
+              <li>
+                <a href="#education" class="navbar-menu text-xl" data-section="education">Education</a>
+              </li>
+              <li>
+                <a href="#experience" class="navbar-menu text-xl" data-section="experience">Experience</a>
+              </li>
+              <li>
+                <a href="#projects" class="navbar-menu text-xl" data-section="projects">Projects</a>
+              </li>
+              <li>
+                <a href="#contact" class="navbar-menu text-xl" data-section="contact">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-36 pb-16 relative hero-section">
+      <!-- Background elements -->
+      <div class="absolute inset-0 z-0">
+        <!-- Circuit-like lighting elements -->
+        <div class="absolute top-1/4 left-10 w-1 h-20 bg-primary/20 rounded-full"></div>
+        <div class="absolute top-1/4 left-10 w-20 h-1 bg-primary/20 rounded-full"></div>
+
+        <div class="absolute top-1/3 right-20 w-1 h-32 bg-secondary/20 rounded-full"></div>
+        <div class="absolute top-1/3 right-20 w-32 h-1 bg-secondary/20 rounded-full"></div>
+
+        <div class="absolute bottom-1/3 left-1/4 w-1 h-16 bg-primary/20 rounded-full"></div>
+        <div class="absolute bottom-1/3 left-1/4 w-16 h-1 bg-primary/20 rounded-full"></div>
+
+        <div class="absolute top-20 left-1/3 w-40 h-1 bg-primary/10 rounded-full"></div>
+        <div class="absolute bottom-40 right-1/4 w-1 h-24 bg-secondary/10 rounded-full"></div>
+
+        <!-- Glowing orbs at intersections with sparks -->
+        <div class="absolute top-1/4 left-10 w-3 h-3 bg-primary/40 rounded-full animate-spark"></div>
+        <div class="absolute top-1/3 right-20 w-3 h-3 bg-secondary/40 rounded-full animate-spark"></div>
+        <div class="absolute bottom-1/3 left-1/4 w-3 h-3 bg-primary/40 rounded-full animate-spark"></div>
+
+        <!-- Spark effect elements moving along circuit lines -->
+        <div class="absolute top-1/4 left-11 w-1.5 h-1.5 bg-primary rounded-full animate-spark-move"></div>
+        <div class="absolute top-1/4 left-12 w-1 h-1 bg-primary rounded-full animate-spark-move"
+          style="animation-delay: 0.5s;"></div>
+        <div class="absolute top-1/3 right-22 w-1.5 h-1.5 bg-secondary rounded-full animate-spark-move"
+          style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/3 right-25 w-1 h-1 bg-secondary rounded-full animate-spark-move"
+          style="animation-delay: 1.5s;"></div>
+        <div class="absolute bottom-1/3 left-1/4 w-1.5 h-1.5 bg-primary rounded-full animate-spark-move"
+          style="animation-delay: 0.7s;"></div>
+
+        <!-- Additional circuit elements with spark effects -->
+        <div class="absolute top-2/3 right-1/3 w-24 h-1 bg-secondary/15 rounded-full"></div>
+        <div class="absolute top-2/3 right-1/3 w-1 h-24 bg-secondary/15 rounded-full"></div>
+        <div class="absolute top-2/3 right-1/3 w-2 h-2 bg-secondary/40 rounded-full animate-spark"></div>
+        <div class="absolute top-2/3 right-1/3 w-1.5 h-1.5 bg-secondary rounded-full animate-spark-move"
+          style="animation-delay: 0.2s;"></div>
+
+        <!-- Background glow -->
+        <div class="absolute top-20 left-10 w-64 h-64 bg-primary/5 rounded-full filter blur-3xl"></div>
+        <div class="absolute bottom-20 right-10 w-64 h-64 bg-secondary/5 rounded-full filter blur-3xl"></div>
+      </div>
+
+      <!-- Content -->
+      <style>
+        .animated-text span {
+          display: inline-block;
+          opacity: 0;
+        }
+      </style>
+      <div class="container mx-auto px-6 pt-8 relative z-10">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 mb-16 md:mb-0 floatLeft">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 font-poppins leading-tight">
+              Hi, I'm <span class="gradient-text">Fahim Rashid</span>
+            </h1>
+
+            <h2 class="text-2xl md:text-3xl text-gray-400 mb-8 font-light fade-left-text">
+              Full Stack Web Developer
+            </h2>
+
+            <p class="text-lg text-gray-400 mb-10 max-w-lg typewriter-text" id="typeText1">
+              From concept to deployment, I build full stack web solutions that are fast, secure, and responsive—crafted
+              with precision and best practices.
+            </p>
+
+            <div class="flex flex-wrap gap-4">
+              <a href="#contact"
+                class="bg-gradient-to-r from-primary to-secondary text-white font-medium py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 inline-flex items-center gap-2">
+                <span>Contact Me</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <a href="#projects"
+                class="glass-effect border border-primary/20 text-white hover:border-primary/50 font-medium py-3 px-8 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 inline-flex items-center gap-2">
+                <i class="fas fa-eye"></i>
+                <span>View Projects</span>
+              </a>
+            </div>
+
+            <div class="mt-12 flex items-center gap-6">
+              <a href="#"
+                class="w-10 h-10 glass-effect rounded-full flex items-center justify-center transition-all duration-300 hover:text-primary hover:scale-110 hover:border-primary/50">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="#"
+                class="w-10 h-10 glass-effect rounded-full flex items-center justify-center transition-all duration-300 hover:text-primary hover:scale-110 hover:border-primary/50">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#"
+                class="w-10 h-10 glass-effect rounded-full flex items-center justify-center transition-all duration-300 hover:text-primary hover:scale-110 hover:border-primary/50">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#"
+                class="w-10 h-10 glass-effect rounded-full flex items-center justify-center transition-all duration-300 hover:text-primary hover:scale-110 hover:border-primary/50">
+                <i class="fab fa-dribbble"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="md:w-1/2 flex justify-center">
+            <div class="relative">
+              <!-- Decorative circles -->
+              <div
+                class="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full border border-primary/20 animate-pulse">
+              </div>
+              <div
+                class="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-12 h-12 rounded-full border border-secondary/20 animate-pulse"
+                style="animation-delay: 0.3s;"></div>
+
+              <!-- Main profile image -->
+              <div class="relative w-72 h-72 md:w-96 md:h-96 rounded-full p-1 neon-border overflow-hidden zoomIn"
+                id="imageContainer">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-10 rounded-full"></div>
+                <img src="asset/fahim-rashid.png" alt="Fahim Rashid" id="floatingImage"
+                  class="shape rounded-full w-full h-full object-cover" />
+              </div>
+
+              <!-- <div class="relative w-72 h-72 md:w-96 md:h-96 overflow-hidden zoomIn"
+                id="imageContainer">
+                <img src="asset/fh.png" alt="" id="floatingImage">
+              </div> -->
+
+
+              <!-- Experience badge -->
+              <div
+                class="fadeOut absolute -top-4 -right-4 glass-effect p-3 rounded-full flex items-center justify-center shadow-lg">
+                <div class="w-16 h-16 rounded-full flex flex-col items-center justify-center border border-primary/20">
+                  <span class="text-lg font-bold gradient-text">3+</span>
+                  <span class="text-xs text-gray-400">Years Exp.</span>
+                </div>
+              </div>
+
+              <!-- Technologies badge -->
+              <div class="absolute -bottom-4 -left-4  glass-effect px-3 py-2 rounded-full shadow-lg">
+                <div class="flex items-center gap-2 fadeOut">
+                  <i class="fab fa-php text-blue-400 text-lg"></i>
+                  <i class="fab fa-js-square text-yellow-400 text-lg"></i>
+                  <i class="fab fa-python text-green-400 text-lg"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden md:block">
+          <a href="#about" class="flex flex-col items-center group">
+            <span class="text-gray-400 text-sm mb-2 group-hover:text-primary transition-colors">Scroll Down</span>
+            <div class="w-8 h-12 rounded-full border-2 border-gray-500 flex justify-center pt-2">
+              <div class="w-1 h-2 bg-primary rounded-full animate-bounce"></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 relative">
+      <div class="absolute inset-0 z-0 opacity-20">
+        <div class="absolute top-1/4 right-1/3 w-64 h-64 bg-primary/5 rounded-full filter blur-3xl"></div>
+        <div class="absolute bottom-1/4 left-1/3 w-64 h-64 bg-secondary/5 rounded-full filter blur-3xl"></div>
+      </div>
+
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="flex flex-col items-center mb-16">
+          <div class="inline-block px-6 py-2 border border-primary/20 rounded-full mb-4">
+            <span class="text-primary text-sm font-medium fadeOut">About Me</span>
+          </div>
+          <h2 class="text-2xl md:text-4xl font-bold text-center mb-4 font-poppins fadeOut">Who I <span
+              class="gradient-text">Am</span></h2>
+          <div class="w-24 h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full fadeOut"></div>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-12 items-center">
+          <div class="lg:w-2/5 fadeOut">
+            <div class="relative">
+              <div class="relative z-10 rounded-xl overflow-hidden hidden glass-effect p-2">
+                <img src="asset/fahim rashid.png" alt="About Me" class="rounded-lg w-full h-auto object-cover" />
+              </div>
+
+              <!-- Decorative elements -->
+              <div class="absolute -bottom-4 -right-4 w-24 h-24 rounded-full border-4 border-primary opacity-20"></div>
+              <div class="absolute -top-4 -left-4 w-32 h-32 rounded-full border-8 border-secondary opacity-10"></div>
+            </div>
+          </div>
+
+          <div class="lg:w-3/5">
+            <h3 class="text-2xl font-semibold mb-4 font-poppins">Full Stack Web Developer</h3>
+
+            <p class="text-gray-300 mb-6" style="text-indent: 1rem;">
+              I have been working as a Full Stack Web Developer for over three years. Throughout this time, I have
+              developed the ability to create robust and scalable applications using modern technologies.Also I
+              specialize in providing web-based software solutions. My journey began with a degree in BSCS.
+            </p>
+
+            <p class="text-gray-300 mb-8">
+              I'm always open to learning advanced tools and technologies.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full glass-effect flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-envelope text-primary"></i>
+                </div>
+                <div class="flex flex-col justify-center">
+                  <span class="text-gray-400 text-sm">Email</span>
+                  <p class="text-white">fahimrashid1122@gmail.com</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full glass-effect flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-phone text-primary"></i>
+                </div>
+                <div class="flex flex-col justify-center">
+                  <span class="text-gray-400 text-sm">Phone</span>
+                  <p class="text-white">+92 343 5431899</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full glass-effect flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-map-marker-alt text-primary"></i>
+                </div>
+                <div class="flex flex-col justify-center">
+                  <span class="text-gray-400 text-sm">Location</span>
+                  <p class="text-white">Dehli Colony, Karachi, Pakistan</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full glass-effect flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-briefcase text-primary"></i>
+                </div>
+                <div class="flex flex-col justify-center">
+                  <span class="text-gray-400 text-sm">Availability</span>
+                  <p class="text-white">Full-time / Freelance / Contract</p>
+                </div>
+              </div>
+            </div>
+
+            <a href="#contact"
+              class="bg-gradient-to-r from-primary to-secondary text-white font-medium py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 inline-flex items-center gap-2">
+              <span>Contact Me</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-24">
+          <div class="glass-effect rounded-xl p-6 text-center">
+            <h4 class="text-3xl font-bold gradient-text mb-2  number_to_be_counted" data-number="3+">0</h4>
+            <p class="text-gray-400 fadeOut">Years Experience</p>
+          </div>
+
+          <div class="glass-effect rounded-xl p-6 text-center">
+            <h4 class="text-3xl font-bold gradient-text mb-2 number_to_be_counted" data-number="25+">0</h4>
+            <p class="text-gray-400 fadeOut">Projects Completed</p>
+          </div>
+
+          <div class="glass-effect rounded-xl p-6 text-center">
+            <h4 class="text-3xl font-bold gradient-text mb-2  number_to_be_counted" data-number="10+">0</h4>
+            <p class="text-gray-400 fadeOut">Happy Clients</p>
+          </div>
+
+          <div class="glass-effect rounded-xl p-6 text-center">
+            <h4 class="text-3xl font-bold gradient-text mb-2  number_to_be_counted" data-number="5+">0</h4>
+            <p class="text-gray-400 fadeOut">Industries Served</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 bg-background relative">
+      <div class="absolute inset-0 z-0 opacity-20">
+        <div class="absolute top-1/4 right-1/3 w-64 h-64 bg-primary/5 rounded-full filter blur-3xl"></div>
+        <div class="absolute bottom-1/4 left-1/3 w-64 h-64 bg-secondary/5 rounded-full filter blur-3xl"></div>
+      </div>
+
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="flex flex-col items-center mb-16">
+          <div class="inline-block px-6 py-2 border border-primary/20 rounded-full mb-4">
+            <span class="text-primary text-sm font-medium fadeOut">My Skills</span>
+          </div>
+          <h2 class="text-2xl md:text-4xl font-bold text-center mb-4 font-poppins fadeOut">My <span
+              class="gradient-text fadeOut">Expertise</span></h2>
+          <div class="w-24 h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full fadeOut"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <!-- Technical Skills -->
+          <div>
+            <h3 class="text-xl font-semibold mb-8 font-poppins pb-2 border-b border-gray-800 fadeOut">Technical Skills
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <!-- php  -->
+              <div class="glass-effect p-5 rounded-xl text-center fadeOut">
+                <div
+                  class="w-16 h-16 mx-auto mb-4 rounded-full glass-effect flex items-center justify-center text-4xl text-yellow-400">
+                  <img src="asset/php.png" alt="php">
+                </div>
+                <h4 class="font-semibold mb-1">PHP</h4>
+              </div>
+              <!-- php larvael  -->
+              <div class="glass-effect p-5 rounded-xl text-center fadeOut">
+                <div
+                  class="w-16 h-16 mx-auto mb-4 rounded-full glass-effect flex items-center justify-center text-4xl text-yellow-400">
+                  <i class="fab fa-laravel"></i>
+                </div>
+                <h4 class="font-semibold mb-1">Laravel</h4>
+              </div>
+              <!-- Django -->
+              <div class="glass-effect p-5 rounded-xl text-center fadeOut">
+                <div
+                  class="w-16 h-16 mx-auto mb-4 rounded-full glass-effect flex items-center justify-center text-4xl text-blue-600">
+                  <img src="asset/django.png" alt="django">
+                </div>
+                <h4 class="font-semibold mb-1">Django</h4>
+              </div>
+              <!-- js  -->
+              <div class="glass-effect p-5 rounded-xl text-center fadeOut">
+                <div
+                  class="w-16 h-16 mx-auto mb-4 rounded-full glass-effect flex items-center justify-center text-4xl text-yellow-400">
+                  <i class="fab fa-js-square"></i>
+                </div>
+                <h4 class="font-semibold mb-1">JavaScript</h4>
+              </div>
+              <!-- next  -->
+              <div class="glass-effect p-5 rounded-xl text-center fadeOut">
+                <div
+                  class="w-16 h-16 mx-auto mb-4 rounded-full glass-effect flex items-center justify-center text-4xl text-green-500">
+                  <img src="asset/next js.png" alt="next js">
+                </div>
+                <h4 class="font-semibold mb-1">NEXT.js</h4>
+              </div>
+              <!-- mysql  -->
+              <div class="glass-effect p-5 rounded-xl text-center fadeOut">
+                <div
+                  class="w-16 h-16 mx-auto mb-4 rounded-full glass-effect flex items-center justify-center text-4xl text-green-400">
+                  <i class="fas fa-database"></i>
+                </div>
+                <h4 class="font-semibold mb-1">MySQL</h4>
+              </div>
+              <!-- PostgreSQL  -->
+              <div class="glass-effect p-5 rounded-xl text-center fadeOut">
+                <div
+                  class="w-16 h-16 mx-auto mb-4 rounded-full glass-effect flex items-center justify-center text-4xl text-green-400">
+                  <i class="fas fa-database"></i>
+                </div>
+                <h4 class="font-semibold mb-1">PostgreSQL</h4>
+              </div>
+              <!-- bootstrap  -->
+              <div class="glass-effect p-5 rounded-xl text-center fadeOut">
+                <div
+                  class="w-16 h-16 mx-auto mb-4 rounded-full glass-effect flex items-center justify-center text-4xl text-red-500">
+                  <i class="fab fa-bootstrap"></i>
+                </div>
+                <h4 class="font-semibold mb-1">Bootstrap</h4>
+              </div>
+              <!-- git  -->
+              <div class="glass-effect p-5 rounded-xl text-center fadeOut">
+                <div
+                  class="w-16 h-16 mx-auto mb-4 rounded-full glass-effect flex items-center justify-center text-4xl text-red-500">
+                  <i class="fab fa-git-alt"></i>
+                </div>
+                <h4 class="font-semibold mb-1">Git</h4>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Professional Skills -->
+          <div>
+            <h3 class="text-xl font-semibold mb-8 font-poppins pb-2 border-b border-gray-800 fadeOut">Professional
+              Skills</h3>
+
+            <div class="space-y-8">
+              <div class="glass-effect p-3 rounded-xl floatBottomSm">
+                <div class="flex gap-6 items-center mb-4">
+                  <div
+                    class="w-14 h-14 rounded-full glass-effect flex items-center justify-center text-2xl text-primary">
+                    <i class="fas fa-users"></i>
+                  </div>
+                  <div class="flex flex-col justify-center">
+                    <h4 class="text-lg font-semibold">Team Leadership</h4>
+                    <p class="text-gray-400 text-sm">Led teams of 3-5 developers on various projects</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="glass-effect p-3 rounded-xl floatBottomSm">
+                <div class="flex gap-6 items-center mb-4">
+                  <div
+                    class="w-14 h-14 rounded-full glass-effect flex items-center justify-center text-2xl text-primary">
+                    <i class="fas fa-tasks"></i>
+                  </div>
+                  <div class="flex flex-col justify-center">
+                    <h4 class="text-lg font-semibold">Project Management</h4>
+                    <p class="text-gray-400 text-sm">Managed full project lifecycles using Agile methodologies</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="glass-effect p-3 rounded-xl floatBottomSm">
+                <div class="flex gap-6 items-center mb-4">
+                  <div
+                    class="w-14 h-14 rounded-full glass-effect flex items-center justify-center text-2xl text-primary">
+                    <i class="fas fa-comment-dots"></i>
+                  </div>
+                  <div class="flex flex-col justify-center">
+                    <h4 class="text-lg font-semibold">Communication</h4>
+                    <p class="text-gray-400 text-sm">Clear communication with clients and team members</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="glass-effect p-3 rounded-xl floatBottomSm">
+                <div class="flex gap-6 items-center mb-4">
+                  <div
+                    class="w-14 h-14 rounded-full glass-effect flex items-center justify-center text-2xl text-primary">
+                    <i class="fas fa-lightbulb"></i>
+                  </div>
+                  <div class="flex flex-col justify-center">
+                    <h4 class="text-lg font-semibold">Problem Solving</h4>
+                    <p class="text-gray-400 text-sm">Creative approaches to technical and business challenges</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="infinite-scroll-container">
+        <h3 class="text-xl font-semibold mb-8 font-poppins pb-2 pt-3 text-center border-b border-gray-800 fadeOut">
+          Behind the Build: Tools & Services</h3>
+        <div class="infinite-scroll-track">
+          <!-- bootstrap -->
+          <div class="infinite-scroll-card">
+            <div class="card-content">
+              <i class="fab fa-bootstrap text-[blue]"></i>
+            </div>
+          </div>
+          <!-- shippo  -->
+          <div class="infinite-scroll-card">
+            <div class="card-content">
+              <img src="asset/icon/shippo.png" alt="" class="bg-white">
+            </div>
+          </div>
+          <!-- stripe  -->
+          <div class="infinite-scroll-card">
+            <div class="card-content">
+              <img src="asset/icon/stripe.png" alt="">
+            </div>
+          </div>
+          <!-- vcita  -->
+          <div class="infinite-scroll-card">
+            <div class="card-content">
+              <img src="asset/icon/vcita.png" alt="">
+            </div>
+          </div>
+          <!-- tcs  -->
+          <div class="infinite-scroll-card">
+            <div class="card-content">
+              <img src="asset/icon/tcs.png" alt="">
+            </div>
+          </div>
+          <!-- shopify  -->
+          <div class="infinite-scroll-card">
+            <div class="card-content">
+              <img src="asset/icon/shopify.png" alt="">
+            </div>
+          </div>
+          <!-- cloud  -->
+          <div class="infinite-scroll-card">
+            <div class="card-content">
+              <img src="asset/icon/google.jpeg" alt="">
+            </div>
+          </div>
+          <!-- datatables  -->
+          <div class="infinite-scroll-card">
+            <div class="card-content">
+              <img src="asset/icon/datatables.png" alt="">
+            </div>
+          </div>
+          <!-- zapier  -->
+          <div class="infinite-scroll-card">
+            <div class="card-content">
+              <img src="asset/icon/zapier.png" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="infinite-scroll-container">
+        <div class="infinite-scroll-track-1">
+          <!-- tailwind  -->
+          <div class="infinite-scroll-card">
+            <div class="card-content">
+              <img src="asset/icon/tailwind.png" alt="">
+            </div>
+          </div>
+          <!-- dpd  -->
+          <div class="infinite-scroll-card">
+            <div class="card-content">
+              <img src="asset/icon/dpd.png" alt="">
+            </div>
+          </div>
+          <!-- paymob  -->
+          <div class="infinite-scroll-card">
+            <div class="card-content">
+              <img src="asset/icon/paymobLogo.png" alt="">
+            </div>
+          </div>
+          <!-- zendisk  -->
+          <div class="infinite-scroll-card">
+            <div class="card-content">
+              <img src="asset/icon/zendesk.png" alt="">
+            </div>
+          </div>
+          <!-- leopard  -->
+          <div class="infinite-scroll-card">
+            <div class="card-content">
+              <img src="asset/icon/leopard.jpg" alt="">
+            </div>
+          </div>
+          <!-- alflah  -->
+          <div class="infinite-scroll-card">
+            <div class="card-content">
+              <img src="asset/icon/alfalah.png" alt="">
+            </div>
+          </div>
+          <!-- wordpress  -->
+          <div class="infinite-scroll-card">
+            <div class="card-content">
+              <img src="asset/icon/wordpress.png" alt="" class="bg-white">
+            </div>
+          </div>
+          <!-- postex  -->
+          <div class="infinite-scroll-card">
+            <div class="card-content">
+              <img src="asset/icon/postex.png" alt="">
+            </div>
+          </div>
+          <!-- twillio  -->
+          <div class="infinite-scroll-card">
+            <div class="card-content">
+              <img src="asset/icon/twillio.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-24 relative">
+      <!-- Background elements -->
+      <div class="absolute inset-0 z-0 overflow-hidden">
+        <div class="absolute top-0 left-1/3 w-80 h-80 bg-primary/5 rounded-full filter blur-3xl"></div>
+        <div class="absolute bottom-0 right-1/3 w-80 h-80 bg-secondary/5 rounded-full filter blur-3xl"></div>
+      </div>
+
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="text-center mb-16">
+          <span class="glass-effect px-4 py-2 rounded-full text-xs text-gray-400 uppercase fadeOut">My Journey</span>
+          <h2 class="text-3xl md:text-4xl font-bold mt-4 fadeOut">Education</h2>
+          <div class="w-16 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mt-4 rounded-full fadeOut"></div>
+        </div>
+
+        <!-- Education Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Education Item 1 -->
+          <div class="glass-effect rounded-xl overflow-hidden hover:border-primary/50 hover:shadow-lg floatLeft">
+            <div class="relative h-48 overflow-hidden">
+              <div class="edu-logo absolute top-2 right-1">
+                <img src="asset/fuuast logo.png" alt="" width="70" height="70">
+              </div>
+              <img src="asset/fuuast.jpg" alt="fuuast" class="w-full h-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+              <div class="absolute bottom-4 left-4">
+                <span class="bg-primary/80 text-white text-xs py-1 px-3 rounded-full backdrop-blur-sm">2019 -
+                  2024</span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2 gradient-text">Bachelor of Computer Science</h3>
+              <h4 class="text-lg mb-4">FUUAST Karachi</h4>
+              <p class="text-gray-300 mb-4">
+                Specialized in HCI and Web Technologies. Active in Web Dev Club and hackathons.
+              </p>
+
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="px-2 py-1 bg-primary/20 text-white text-xs rounded-md">HCI</span>
+                <span class="px-2 py-1 bg-primary/20 text-white text-xs rounded-md">Software Engineering</span>
+                <span class="px-2 py-1 bg-primary/20 text-white text-xs rounded-md">Web Tech</span>
+                <span class="px-2 py-1 bg-primary/20 text-white text-xs rounded-md">DBMS</span>
+                <span class="px-2 py-1 bg-primary/20 text-white text-xs rounded-md">GPA 3.73</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education Item 2 -->
+          <div class=" glass-effect rounded-xl overflow-hidden hover:border-primary/50 hover:shadow-lg floatBottom">
+            <div class="relative h-48 overflow-hidden">
+              <div class="edu-logo absolute top-2 right-1">
+                <img src="asset/fg boy.png" alt="" width="70" height="70">
+              </div>
+              <img src="asset/degree college skardu.jpg" alt="govt. degree college skardu"
+                class="w-full h-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+              <div class="absolute bottom-4 left-4">
+                <span class="bg-primary/80 text-white text-xs py-1 px-3 rounded-full backdrop-blur-sm">2016 -
+                  2018</span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2 gradient-text">HSSC - ICS</h3>
+              <h4 class="text-lg mb-4">Govt. Boys Degree College Skardu</h4>
+              <p class="text-gray-300 mb-4">
+                Completed college under the guidance of professional and respected educators
+              </p>
+
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="px-2 py-1 bg-primary/20 text-white text-xs rounded-md">ICS</span>
+                <span class="px-2 py-1 bg-primary/20 text-white text-xs rounded-md">Programming</span>
+                <span class="px-2 py-1 bg-primary/20 text-white text-xs rounded-md">Algorithms</span>
+                <span class="px-2 py-1 bg-primary/20 text-white text-xs rounded-md">68%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education Item 3 -->
+          <div class="glass-effect rounded-xl overflow-hidden hover:border-primary/50 hover:shadow-lg floatRight">
+            <div class="relative h-48 overflow-hidden">
+              <div class="edu-logo absolute top-2 right-1">
+                <img src="asset/psac.png" alt="" width="70" height="70">
+              </div>
+              <img src="asset/psac.jpg" alt="public school & college" class="w-full h-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+              <div class="absolute bottom-4 left-4">
+                <span class="bg-primary/80 text-white text-xs py-1 px-3 rounded-full backdrop-blur-sm">2014 -
+                  2016</span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2 gradient-text">SSC - ICS</h3>
+              <h4 class="text-lg mb-4">Public School & College Skardu</h4>
+              <p class="text-gray-300 mb-4">
+                Studied Computer Science at the secondary level, developing early skills in logic, algorithms, and basic
+                programming.
+              </p>
+
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="px-2 py-1 bg-primary/20 text-white text-xs rounded-md">Programming</span>
+                <span class="px-2 py-1 bg-primary/20 text-white text-xs rounded-md">Algorithms</span>
+                <span class="px-2 py-1 bg-primary/20 text-white text-xs rounded-md">Math</span>
+                <span class="px-2 py-1 bg-primary/20 text-white text-xs rounded-md">Logic</span>
+                <span class="px-2 py-1 bg-primary/20 text-white text-xs rounded-md">77%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-24 relative">
+      <div class="absolute inset-0 z-0 opacity-20">
+        <div class="absolute top-1/4 right-1/3 w-64 h-64 bg-primary/5 rounded-full filter blur-3xl"></div>
+        <div class="absolute bottom-1/4 left-1/3 w-64 h-64 bg-secondary/5 rounded-full filter blur-3xl"></div>
+      </div>
+
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="flex flex-col items-center mb-16">
+          <div class="inline-block px-6 py-2 border border-primary/20 rounded-full mb-4">
+            <span class="text-primary text-sm font-medium fadeOut">Experience</span>
+          </div>
+          <h2 class="text-2xl md:text-4xl font-bold text-center mb-4 font-poppins fadeOut">My <span
+              class="gradient-text">Journey</span></h2>
+          <div class="w-24 h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full fadeOut"></div>
+        </div>
+
+        <div class="timeline-container">
+          <!-- Timeline Item 1 -->
+          <div class="timeline-item right floatRight">
+            <div class="timeline-content glass-effect">
+              <div class="flex flex-col md:flex-row md:justify-between mb-4">
+                <div>
+                  <h3 class="text-lg font-bold">Sr. Backend Developed</h3>
+                  <p class="text-primary">Bytescentral ltd.</p>
+                </div>
+                <div
+                  class="glass-effect px-4 py-1 rounded-full text-sm inline-flex items-center mt-2 md:mt-0 self-start">
+                  <i class="far fa-calendar-alt mr-2 text-primary"></i>
+                  June 2022 - Present
+                </div>
+              </div>
+              <p class="text-gray-300 mb-4">
+                Developed client websites and applications from start to finish, including API integrations. Worked
+                closely with clients to understand goals and translate their needs into tailored technical solutions.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-primary/20 rounded-full text-xs font-medium text-primary"
+                  tag="django">django</span>
+                <span class="px-3 py-1 bg-primary/20 rounded-full text-xs font-medium text-primary"
+                  tag="Laravel">Laravel</span>
+                <span class="px-3 py-1 bg-primary/20 rounded-full text-xs font-medium text-primary"
+                  tag="Codeigniter">Codeigniter</span>
+                <span class="px-3 py-1 bg-primary/20 rounded-full text-xs font-medium text-primary" tag="PHP">PHP</span>
+                <span class="px-3 py-1 bg-primary/20 rounded-full text-xs font-medium text-primary"
+                  tag="RestfullApis">Restfull Apis</span>
+                <span class="px-3 py-1 bg-primary/20 rounded-full text-xs font-medium text-primary"
+                  tag="Wordpress">Wordpress</span>
+                <span class="px-3 py-1 bg-primary/20 rounded-full text-xs font-medium text-primary" tag="next-js">Next
+                  Js</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2 -->
+          <div class="timeline-item left floatLeft">
+            <div class="timeline-content glass-effect">
+              <div class="flex flex-col md:flex-row md:justify-between mb-4">
+                <div>
+                  <h3 class="text-lg font-bold">Full Stack Web Developer</h3>
+                  <p class="text-primary">Freelance</p>
+                </div>
+                <div
+                  class="glass-effect px-4 py-1 rounded-full text-sm inline-flex items-center mt-2 md:mt-0 self-start">
+                  <i class="far fa-calendar-alt mr-2 text-primary"></i>
+                  Dec 2021 - Present
+                </div>
+              </div>
+              <p class="text-gray-300 mb-4">
+                Developed and maintained multiple client websites and web applications. Collaborated with
+                cross-functional
+                teams to complete projects and integrate APIs effectively.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-primary/20 rounded-full text-xs font-medium text-primary">PHP</span>
+                <span class="px-3 py-1 bg-primary/20 rounded-full text-xs font-medium text-primary">Laravel</span>
+                <span class="px-3 py-1 bg-primary/20 rounded-full text-xs font-medium text-primary">Html</span>
+                <span class="px-3 py-1 bg-primary/20 rounded-full text-xs font-medium text-primary">CSS</span>
+                <span class="px-3 py-1 bg-primary/20 rounded-full text-xs font-medium text-primary">JS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 3 -->
+          <div class="timeline-item right floatRight">
+            <div class="timeline-content glass-effect">
+              <div class="flex flex-col md:flex-row md:justify-between mb-4">
+                <div>
+                  <h3 class="text-lg font-bold">Laravel Developer</h3>
+                  <p class="text-primary">E-Consultants</p>
+                </div>
+                <div
+                  class="glass-effect px-4 py-1 rounded-full text-sm inline-flex items-center mt-2 md:mt-0 self-start">
+                  <i class="far fa-calendar-alt mr-2 text-primary"></i>
+                  Apr 2022 - Sep 2024
+                </div>
+              </div>
+              <p class="text-gray-300 mb-4">
+                Led a team of developers and graphic designer in building responsive web applications for enterprise
+                clients. Using powerfull backend and frontend technology.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-primary/20 rounded-full text-xs font-medium text-primary">PHP</span>
+                <span class="px-3 py-1 bg-primary/20 rounded-full text-xs font-medium text-primary">Laravel</span>
+                <span class="px-3 py-1 bg-primary/20 rounded-full text-xs font-medium text-primary">Html</span>
+                <span class="px-3 py-1 bg-primary/20 rounded-full text-xs font-medium text-primary">Wordpress</span>
+                <span class="px-3 py-1 bg-primary/20 rounded-full text-xs font-medium text-primary">Next JS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 4 -->
+          <div class="timeline-item left floatLeft">
+            <div class="timeline-content glass-effect">
+              <div class="flex flex-col md:flex-row md:justify-between mb-4">
+                <div>
+                  <h3 class="text-lg font-bold">Beautify</h3>
+                  <p class="text-primary">FYP - FUUAST Karachi</p>
+                </div>
+                <div
+                  class="glass-effect px-4 py-1 rounded-full text-sm inline-flex items-center mt-2 md:mt-0 self-start">
+                  <i class="far fa-calendar-alt mr-2 text-primary"></i>
+                  Jun 2023 - March 2024
+                </div>
+              </div>
+              <p class="text-gray-300 mb-4">
+                Created Beautify, a salon booking platform enabling vendors to list services while users schedule
+                appointments and pay online. Included vendor dashboards, listings, and secure booking flow.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-primary/20 rounded-full text-xs font-medium text-primary">HTML/CSS</span>
+                <span class="px-3 py-1 bg-primary/20 rounded-full text-xs font-medium text-primary">JavaScript</span>
+                <span class="px-3 py-1 bg-primary/20 rounded-full text-xs font-medium text-primary">PHP</span>
+                <span class="px-3 py-1 bg-primary/20 rounded-full text-xs font-medium text-primary">Laravel</span>
+                <span class="px-3 py-1 bg-primary/20 rounded-full text-xs font-medium text-primary">APIs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 bg-background relative">
+      <div class="absolute inset-0 z-0 opacity-20">
+        <div class="absolute top-1/4 right-1/3 w-64 h-64 bg-primary/5 rounded-full filter blur-3xl"></div>
+        <div class="absolute bottom-1/4 left-1/3 w-64 h-64 bg-secondary/5 rounded-full filter blur-3xl"></div>
+      </div>
+
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="flex flex-col items-center mb-16">
+          <div class="inline-block px-6 py-2 border border-primary/20 rounded-full mb-4">
+            <span class="text-primary text-sm font-medium fadeOut">Showcase</span>
+          </div>
+          <h2 class="text-2xl md:text-4xl font-bold text-center mb-4 font-poppins fadeOut">My <span
+              class="gradient-text">Projects</span></h2>
+          <div class="w-24 h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full fadeOut"></div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="mb-12">
+          <div class="flex flex-col gap-6 fadeOut" id="projects-grid">
+            <!-- Project rows will be added here dynamically using JavaScript -->
+          </div>
+        </div>
+
+        <!-- Project Modal -->
+        <div id="project-modal" class="fixed inset-0 z-100 flex items-end justify-center p-4 hidden">
+          <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" id="modal-backdrop"></div>
+          <div class="relative z-20 glass-effect rounded-xl max-w-3xl w-full max-h-[84vh] overflow-y-auto">
+            <button id="close-modal-btn"
+              class="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-800/70 text-white flex items-center justify-center hover:bg-opacity-80 transition-colors">
+              <i class="fas fa-times"></i>
+            </button>
+
+            <div class="p-6" id="modal-content">
+              <!-- Modal content will be dynamically inserted here -->
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-16" id="view-buttons-container">
+          <button id="view-more-btn"
+            class="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary text-white font-medium py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 mx-2">
+            <span>View More</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <button id="view-less-btn"
+            class="inline-flex items-center gap-2 bg-gray-700 text-white font-medium py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 mx-2">
+            <span>Show Less</span>
+            <i class="fas fa-chevron-up"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 relative">
+      <div class="absolute inset-0 z-0 opacity-20">
+        <div class="absolute top-1/4 right-1/3 w-64 h-64 bg-primary/5 rounded-full filter blur-3xl"></div>
+        <div class="absolute bottom-1/4 left-1/3 w-64 h-64 bg-secondary/5 rounded-full filter blur-3xl"></div>
+      </div>
+
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="flex flex-col items-center mb-16">
+          <div class="inline-block px-6 py-2 border border-primary/20 rounded-full mb-4">
+            <span class="text-primary text-sm font-medium fadeOut">Contact</span>
+          </div>
+          <h2 class="text-2xl md:text-4xl font-bold text-center mb-4 font-poppins fadeOut">Get In <span
+              class="gradient-text">Touch</span></h2>
+          <div class="w-24 h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div class="floatLeft">
+            <h3 class="text-2xl font-semibold mb-6 font-poppins">Let's Discuss Your Project</h3>
+            <p class="text-gray-300 mb-8">
+              Feel free to reach out to me for collaborations, questions, or just to say hello. I'll do my best to get
+              back to you as soon as possible.
+            </p>
+
+            <div class="space-y-6">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full glass-effect flex items-center justify-center text-primary">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <h4 class="text-white font-medium">Email</h4>
+                  <p class="text-gray-400">fahimrashid1122@gmail.com</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full glass-effect flex items-center justify-center text-primary">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div>
+                  <h4 class="text-white font-medium">Phone</h4>
+                  <p class="text-gray-400">+92 343 5431899</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full glass-effect flex items-center justify-center text-primary">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <h4 class="text-white font-medium">Location</h4>
+                  <p class="text-gray-400">Dehli Colony, Karachi, Pakistan</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8 flex gap-4">
+              <a href="#"
+                class="w-10 h-10 glass-effect rounded-full flex items-center justify-center transition-all duration-300 hover:text-primary hover:scale-110 hover:border-primary/50">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="#"
+                class="w-10 h-10 glass-effect rounded-full flex items-center justify-center transition-all duration-300 hover:text-primary hover:scale-110 hover:border-primary/50">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#"
+                class="w-10 h-10 glass-effect rounded-full flex items-center justify-center transition-all duration-300 hover:text-primary hover:scale-110 hover:border-primary/50">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#"
+                class="w-10 h-10 glass-effect rounded-full flex items-center justify-center transition-all duration-300 hover:text-primary hover:scale-110 hover:border-primary/50">
+                <i class="fab fa-dribbble"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="floatRight">
+            <form id="contact-form" class="glass-effect p-8 rounded-xl">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label for="name" class="block text-sm font-medium text-gray-400 mb-2">Name</label>
+                  <input type="text" id="name" name="name"
+                    class="w-full px-4 py-3 rounded-lg glass-effect border border-gray-700 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 bg-gray-800/50 text-white"
+                    placeholder="Your Name" required />
+                </div>
+
+                <div>
+                  <label for="email" class="block text-sm font-medium text-gray-400 mb-2">Email</label>
+                  <input type="email" id="email" name="email"
+                    class="w-full px-4 py-3 rounded-lg glass-effect border border-gray-700 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 bg-gray-800/50 text-white"
+                    placeholder="Your Email" required />
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <label for="subject" class="block text-sm font-medium text-gray-400 mb-2">Subject</label>
+                <input type="text" id="subject" name="subject"
+                  class="w-full px-4 py-3 rounded-lg glass-effect border border-gray-700 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 bg-gray-800/50 text-white"
+                  placeholder="Subject" required />
+              </div>
+
+              <div class="mb-6">
+                <label for="message" class="block text-sm font-medium text-gray-400 mb-2">Message</label>
+                <textarea id="message" name="message" rows="5"
+                  class="w-full px-4 py-3 rounded-lg glass-effect border border-gray-700 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 bg-gray-800/50 text-white resize-none"
+                  placeholder="Your Message" required></textarea>
+              </div>
+
+              <div id="formSuccess"
+                class="hidden w-full bg-gradient-to-r from-[green] to-[aquamarine] text-white font-medium py-3 px-8 rounded-md mb-6 shadow-lg transition-transform">
+                Message sent successfully
+              </div>
+
+              <button type="submit"
+                class="w-full bg-gradient-to-r from-primary to-secondary text-white font-medium py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-gray-800">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-4 md:mb-0">
+            <p class="text-gray-400">&copy; 2023 Fahim Rashid. All rights reserved.</p>
+          </div>
+
+          <div class="flex gap-4">
+            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+              <i class="fab fa-dribbble"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+
+
+  <!-- JavaScript -->
+  <script src="asset/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="asset/animation.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</body>
+
+</html>
